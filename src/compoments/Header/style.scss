@@ -1,0 +1,25 @@
+nav{
+width:100%;
+height: 91px;
+padding: 10px 35px;
+background: #020203;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+.el{
+    display: flex;
+    flex-direction: row;
+    font-family: Roboto;
+    text-align: left;
+    justify-content: space-between;
+    
+   .nav-link{
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 60px;
+    text-decoration: none;
+    }
+}
+}

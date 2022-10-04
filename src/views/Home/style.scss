@@ -1,0 +1,26 @@
+ .container{
+  h1{
+    font-size: 48px;
+   
+    .brand{
+      color: #FF0101; 
+    }
+   
+  }
+  .intro{
+    font-size: 20px;
+  }
+  .link-users{
+      margin-top: 2%;
+      display: flex;
+      flex-direction: row;
+    .link-user{
+      margin-right: 2%;
+      text-decoration: none;
+      color: black;
+    }
+  }
+ }
+
+
+

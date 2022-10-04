@@ -1,0 +1,32 @@
+aside {
+position: absolute;
+width: 117px;
+height: 1024px;
+left: 0px;
+top: 9%;
+background: #020203;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.blockIcons{
+    position: absolute;
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    left: 18%;
+    background: #020203;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    .icons {
+        width: 64px;
+        padding-bottom: 20px;
+      }
+      .copyright {
+        position: absolute;
+        bottom: -50%;
+        width: 200px;
+        color: white;
+        font-size: 12px;
+        transform: rotate(-90deg);
+        right: -99%;    
+        }
+}
+  
