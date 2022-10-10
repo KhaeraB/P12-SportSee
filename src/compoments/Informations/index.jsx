@@ -17,32 +17,40 @@ export function Informations() {
   }
   return (
       <Container className="info">
-        <div className="type">
+      <div className="type">
+       <div className="cardInfo">
           <img src={calorieIcon} alt="icon calories" />
           <div className="score">
             <h4>{info.calorieCount}kCal</h4>
             <p>Calories</p>
           </div>
-        </div>
-        <div className="type">
-          <img src={proteinIcon} alt="icon protein" />
-          <div className="score">
-            <h4>{info.proteinCount}g</h4>
-            <p>Protéines</p>
           </div>
         </div>
         <div className="type">
-          <img src={carbIcon} alt="icon protein" />
-          <div className="score">
-            <h4>{info.carbohydrateCount}g</h4>
-            <p>Glucides</p>
+          <div className="cardInfo">
+            <img src={proteinIcon} alt="icon protein" />
+              <div className="score">
+                <h4>{info.proteinCount}g</h4>
+                <p>Protéines</p>
+              </div>
+            </div>
+        </div>
+        <div className="type">
+          <div className="cardInfo">
+            <img src={carbIcon} alt="icon protein" />
+              <div className="score">
+                <h4>{info.carbohydrateCount}g</h4>
+                <p>Glucides</p>
+              </div>
           </div>
         </div>
         <div className="type">
-          <img src={fatIcon} alt="icon protein" />
-          <div className="score">
-            <h4>{info.lipidCount}g</h4>
-            <p>Lipides</p>
+          <div className="cardInfo">
+            <img src={fatIcon} alt="icon protein" />
+            <div className="score">
+              <h4>{info.lipidCount}g</h4>
+              <p>Lipides</p>
+            </div>
           </div>
         </div>
 

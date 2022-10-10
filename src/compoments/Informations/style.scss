@@ -11,3 +11,24 @@
         }
     }
 }
+.profil{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .type{
+        height: 124px;
+        width: 258px;
+        border-radius: 5px;
+        align-content: center;
+        .cardInfo{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 2%;
+            .score{
+                margin: 0;
+            }
+        }
+    }
+   
+  }

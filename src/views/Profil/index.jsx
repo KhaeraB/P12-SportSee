@@ -8,13 +8,15 @@ import { Informations } from "../../compoments/Informations";
 export default function Profil() {
   const { id } = useParams();
   return (
-    <Container className="d-flex align-items-center content">
+    <Container className="content">
       <HeaderDashbord />
-
+        <Container className="profil">
           {/* bars Activity     */}
-          <BarChartActivity userId={id} />
-         <Informations userId={id} />
-    
+         
+            <BarChartActivity userId={id} />
+         
+        <Informations userId={id} />
+        </Container>
     </Container>
   );
 }
