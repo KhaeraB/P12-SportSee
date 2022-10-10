@@ -1,26 +1,20 @@
 import React from "react";
-import Error from "../Error";
 import { Container } from "react-bootstrap";
-import "./style.scss";
-import useSportSeeApi from "../../services/hooks/useSportSeeApi";
-import { useParams } from "react-router-dom";
+import HeaderDashbord from "../../compoments/HeaderDashboard";
+import BarChartActivity from "../../compoments/BarChartActivity";
+import { useParams } from "react-router";
+import { Informations } from "../../compoments/Informations";
 
 export default function Profil() {
- const { id } = useParams();
- console.log(id);
-  const { data, error, isLoading } = useSportSeeApi("userInfos", id);
-  
-  const userData = JSON.stringify({data});
-  console.log(userData);
- if(error){
-    return (
-        <Error/>
-      );
- }
+  const { id } = useParams();
   return (
     <Container className="d-flex align-items-center content">
-          <h1> Bonjour </h1>
-       
+      <HeaderDashbord />
+
+          {/* bars Activity     */}
+          <BarChartActivity userId={id} />
+         <Informations userId={id} />
+    
     </Container>
   );
 }

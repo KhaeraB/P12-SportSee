@@ -1,0 +1,13 @@
+.info{
+    display: flex;
+    flex-direction: column;
+    .type{
+        display: flex;
+        flex-direction: row;
+        background-color: #FBFBFB;
+        margin: 1%;
+        img{
+            margin: 4px;
+        }
+    }
+}

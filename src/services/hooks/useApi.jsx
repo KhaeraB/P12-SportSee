@@ -12,7 +12,8 @@ const TYPE_0F_ACTIVITY = {
   6: "Intensité",
 };
 
-function useSportSeeApi(service, id) {
+function useApi(service, id) {
+ 
   const endpoint = getByEndpoints(service, id);
   const [data, setData] = useState({});
 
@@ -28,7 +29,7 @@ function useSportSeeApi(service, id) {
         const url = `${BASE_URL}/${endpoint}`;
         const dataApi = await axios.get(url).then(({ data }) => data);
        // console.log(dataApi)
-        const getData = getDataByService(dataApi, service);
+        const getData = DataByService(dataApi, service);
         setData(getData);
       } catch (err) {
         setError(err);
@@ -39,12 +40,12 @@ function useSportSeeApi(service, id) {
     axiosData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [service, id, endpoint]);
-
+  
   return { data, error, isLoading };
 }
 
 function getByEndpoints(service, id) {
-    console.log(service, "  ", id)
+    //console.log(service, "  ", id)
   switch (service) {
     case "userInfos":
       return `user/${id}`;
@@ -58,10 +59,10 @@ function getByEndpoints(service, id) {
     case "activities":
       return `user/${id}/performance`;
 
-    case "average-sessions":
+    case "averageSessions":
       return `user/${id}/average-sessions`;
 
-    case "daily-activity":
+    case "daysActivity":
       return `user/${id}/activity`;
 
     default:
@@ -69,36 +70,37 @@ function getByEndpoints(service, id) {
   }
 }
 
-function getDataByService(data, service) {
-    console.log(data, "  ", service)
+function DataByService(data, service) {
+   // console.log(data, "  ", service)
   if (data) {
     switch (service) {
       case "userInfos":
+        return infoUser(data);
+        
+      case "key-data":
         return infoUser(data);
 
       case "activities":
         return getActivities(data.data.data);
 
-      case "average-sessions":
-        return getAverageSessions(data.data.sessions);
+      case "averageSessions":
+        return averageSessions(data.data.sessions);
 
-      case "daily-activity":
-        return getDailyActivity(data.data.sessions);
+      case "daysActivity":
+        return DaysActivity(data.data.sessions);
 
       default:
         console.error(
-          `DataByService error: service "${service}" is not defined.`
+          `Error: service "${service}" is not defined.`
         );
         return;
     }
   }
-  console.error("DataByService : no data to process.");
+  console.error("No data to process.");
   return;
 }
 export function infoUser(data) {
-  return data === "user not found"
-    ? "wrong user"
-    : {
+  return  {
         firstName: data.data.userInfos.firstName,
         macroKPI: data.data.keyData,
         userScore: data.data.todayScore || data.data.score,
@@ -121,7 +123,7 @@ export function getActivities() {
 /**
  * @returns {array.Object} default data for AverageSessionsChart
  */
-export function getDefaultAverageSessions() {
+export function defaultAverageSessions() {
   const averageSessions = [
     {
       day: "L",
@@ -151,7 +153,7 @@ export function getDefaultAverageSessions() {
       day: "D",
       sessionLength: 0,
     },
-  ];
+  ];        
 
   return averageSessions;
 }
@@ -160,48 +162,27 @@ export function getDefaultAverageSessions() {
  * @param {array.Object} data
  * @returns {array.Object} data for AverageSessionsChart
  */
-function getAverageSessions(data) {
-  let averageSessions = getDefaultAverageSessions();
+function averageSessions(data) {
+  let averageSessions = defaultAverageSessions();
 
-  for (let index in data) {
-    averageSessions[index].sessionLength = data[index].sessionLength;
+  for (let i in data) {
+    averageSessions[i].sessionLength = data[i].sessionLength;
   }
 
   return averageSessions;
 }
 
 /**
- * Build an array with the dates of the 7 previous days.
+ * Build of the 7 days.
  * @returns {array.Object} default data for DailyActivityChart
  */
-export function getDefaultDailyActivity() {
-  const dailyActivity = [];
 
-  let date = new Date(Date.now());
-
-  // eslint-disable-next-line no-unused-vars
-  for (let _ of "1234567") {
-    let dateFr = new Intl.DateTimeFormat("fr").format(date);
-
-    dailyActivity.push({
-      day: dateFr.slice(0, 5),
-      kilogram: 0,
-      calories: 0,
-    });
-
-    date.setDate(date.getDate() - 1);
-  }
-
-  dailyActivity.reverse();
-
-  return dailyActivity;
-}
 
 /**
  * @param {array.Object} data
  * @returns {array.Object} data for DailyActivityChart
  */
-function getDailyActivity(data) {
+export function DaysActivity(data) {
   if (data) {
     const dailyActivity = [];
 
@@ -210,16 +191,17 @@ function getDailyActivity(data) {
       const [yyyy, mm, dd] = item.day.split("-");
 
       dailyActivity.push({
-        day: `${dd}/${mm}`,
+        day: `${dd.slice(1)}`,
         kilogram: item.kilogram,
         calories: item.calories,
       });
     }
-
+   // console.log(dailyActivity)
     return dailyActivity;
   }
 
-  return getDefaultDailyActivity();
+  return DaysActivity();
 }
 
-export default useSportSeeApi;
+
+export default useApi

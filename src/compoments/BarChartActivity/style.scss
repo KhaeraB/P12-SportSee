@@ -1,0 +1,67 @@
+// Graphic design
+.graphic
+{
+    background-color: #FBFBFB;
+    height: 320px;
+    width: 835px;
+    left: 0px;
+    top: 0px;
+    border-radius: 5px;
+
+    .info-graphic{
+        display: flex;
+        flex-direction: row;
+        padding: 1%;
+        justify-content: space-between;
+        .title-graphic{
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0px;
+            text-align: left; 
+        }
+        .legends{
+            display: flex;
+            flex-direction: row;
+            .circle{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding-right: 5px;
+                .point{
+                    height: 8px;
+                    width: 8px;
+                    border-radius: 50%; 
+                    background-color: #020203;
+                }
+                .red{
+                    background-color: #ff0101;
+                }
+                .black{
+                    background-color: #020203;
+                }
+            }
+           
+        }
+    }
+    .custom-tooltip
+    {
+        background-color: #E60000;
+        color: white;
+        text-align: center;
+        justify-content: space-around;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 12px;
+        line-height: 24px;
+        height: 63px;
+        width: 60px;
+        border: none;
+
+        &:hover{
+            border: none;
+        }
+    }
+}
