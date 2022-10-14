@@ -1,0 +1,27 @@
+.lineChart{
+    background-color: #ff0101;
+    width: 30%;
+    height: 268px;
+    border-radius: 5px;
+    margin-top: 3%;
+    .recharts-wrapper{
+        position: relative;
+        cursor: default;
+        width: 251px;
+        height: 212px;
+        top: 9%;
+    }
+    .titleLineChart{
+        padding: 9px 14px 0 14px;
+        color: white;
+        opacity: 0.5;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 24px;
+        position: absolute;
+        bottom: -13%;
+    }
+    .recharts-responsive-container{
+        border-radius: 5px;
+    }
+}

@@ -4,6 +4,7 @@ import HeaderDashbord from "../../compoments/HeaderDashboard";
 import BarChartActivity from "../../compoments/BarChartActivity";
 import { useParams } from "react-router";
 import { Informations } from "../../compoments/Informations";
+import { UserLineChart } from "../../compoments/LineChart";
 
 export default function Profil() {
   const { id } = useParams();
@@ -12,9 +13,10 @@ export default function Profil() {
       <HeaderDashbord />
         <Container className="profil">
           {/* bars Activity     */}
-         
-            <BarChartActivity userId={id} />
-         
+            <div>
+              <BarChartActivity userId={id} />
+              <UserLineChart userId={id} />
+            </div>
         <Informations userId={id} />
         </Container>
     </Container>

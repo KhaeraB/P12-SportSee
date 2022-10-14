@@ -1,6 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { DaysActivities } from "../../models/DaysActivities";
+import { NutriScore } from "../../models/Score";
+import { infoUser } from "../../models/InfoUser";
 const BASE_URL = "http://localhost:3000";
 
 const TYPE_0F_ACTIVITY = {
@@ -78,16 +81,16 @@ function DataByService(data, service) {
         return infoUser(data);
         
       case "key-data":
-        return infoUser(data);
+        return NutriScore(data);
 
       case "activities":
-        return getActivities(data.data.data);
+        return Activities(data.data.data);
 
       case "averageSessions":
-        return averageSessions(data.data.sessions);
+        return AverageSessions(data.data.sessions);
 
       case "daysActivity":
-        return DaysActivity(data.data.sessions);
+        return DaysActivities(data.data.sessions);
 
       default:
         console.error(
@@ -99,15 +102,9 @@ function DataByService(data, service) {
   console.error("No data to process.");
   return;
 }
-export function infoUser(data) {
-  return  {
-        firstName: data.data.userInfos.firstName,
-        macroKPI: data.data.keyData,
-        userScore: data.data.todayScore || data.data.score,
-      };
-}
 
-export function getActivities() {
+
+export function Activities() {
   const activities = [];
 
   for (let key in TYPE_0F_ACTIVITY) {
@@ -162,7 +159,7 @@ export function defaultAverageSessions() {
  * @param {array.Object} data
  * @returns {array.Object} data for AverageSessionsChart
  */
-function averageSessions(data) {
+function AverageSessions(data) {
   let averageSessions = defaultAverageSessions();
 
   for (let i in data) {
@@ -178,30 +175,6 @@ function averageSessions(data) {
  */
 
 
-/**
- * @param {array.Object} data
- * @returns {array.Object} data for DailyActivityChart
- */
-export function DaysActivity(data) {
-  if (data) {
-    const dailyActivity = [];
-
-    for (let item of data) {
-      // eslint-disable-next-line no-unused-vars
-      const [yyyy, mm, dd] = item.day.split("-");
-
-      dailyActivity.push({
-        day: `${dd.slice(1)}`,
-        kilogram: item.kilogram,
-        calories: item.calories,
-      });
-    }
-   // console.log(dailyActivity)
-    return dailyActivity;
-  }
-
-  return DaysActivity();
-}
 
 
 export default useApi

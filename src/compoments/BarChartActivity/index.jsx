@@ -17,7 +17,7 @@ export default function BarChartAvtivity() {
   const { id } = useParams();
   const { data, error, isLoading } = useApi("daysActivity", id);
   let oneDayActivity = data;
-
+console.log(oneDayActivity)
   if (error || !isLoading) {
     console.log(error)
   }
