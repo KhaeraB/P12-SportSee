@@ -4,12 +4,18 @@
     height: 268px;
     border-radius: 5px;
     margin-top: 3%;
+    position: relative;
     .recharts-wrapper{
         position: relative;
         cursor: default;
         width: 251px;
         height: 212px;
         top: 9%;
+    }
+    .recharts-tooltip-wrapper-right, .recharts-tooltip-wrapper-left {
+        background-color: white;
+        font-size: 8px;
+        padding: 2%;
     }
     .titleLineChart{
         padding: 9px 14px 0 14px;
@@ -19,7 +25,8 @@
         font-size: 15px;
         line-height: 24px;
         position: absolute;
-        bottom: -13%;
+        left: 6%;
+        top: 5%;
     }
     .recharts-responsive-container{
         border-radius: 5px;
