@@ -7,6 +7,7 @@ import { Informations } from "../../compoments/Informations";
 import { UserLineChart } from "../../compoments/LineChart";
 import {ActivitiesRadarChart} from "../../compoments/Radar";
 import "./style.scss"
+import { ScoreActivity } from "../../compoments/PieChart";
 
 export default function Profil() {
   const { id } = useParams();
@@ -19,7 +20,8 @@ export default function Profil() {
               <BarChartActivity userId={id} />
               <div className="bottomGraphic">
               <UserLineChart userId={id} />
-              <ActivitiesRadarChart userId={id} />
+              <ActivitiesRadarChart  userId={id}/>
+              <ScoreActivity userId={id} />
               </div>
              
             </div>

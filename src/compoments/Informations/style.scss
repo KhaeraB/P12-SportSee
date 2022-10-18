@@ -27,7 +27,9 @@
             height: 117px;
             width: 218px;
         }
-       
+       &:last-child{
+        margin: 0;
+       }
         .cardInfo{
             display: flex;
             flex-direction: row;

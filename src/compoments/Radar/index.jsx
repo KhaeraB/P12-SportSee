@@ -15,7 +15,7 @@ import colors  from "../../utils/colors";
 import Loader from "../Loader";
 import "./style.scss"; 
 
-export function ActivitiesRadarChart({userId}) {
+export function ActivitiesRadarChart({ userId }) {
     const {id} = useParams()
     const { data, isLoading, error } = useApi("activities", id);
 

@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import React from "react";
+import React, {useEffect} from "react";
+import Loader from "../Loader";
 import {
   Line,
   LineChart,
@@ -20,10 +21,11 @@ export function UserLineChart({ userId }) {
 
   const sessions = data;
 
-  if (error || isLoading) {
-    console.log(error);
-  }
-
+  useEffect(()=>{
+    if (error || isLoading) {
+      < Loader /> 
+    }
+  }, [error, data, isLoading])
   return (
     <Container className="lineChart">
       <div className="titleLineChart">

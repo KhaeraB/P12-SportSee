@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import Profil from './views/Profil'
+import Profil from './views/Dashboard'
 import Setting from './views/Setting'
 import Community from './views/Community'
 import Error from './views/Error'
