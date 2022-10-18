@@ -5,6 +5,8 @@ import BarChartActivity from "../../compoments/BarChartActivity";
 import { useParams } from "react-router";
 import { Informations } from "../../compoments/Informations";
 import { UserLineChart } from "../../compoments/LineChart";
+import {ActivitiesRadarChart} from "../../compoments/Radar";
+import "./style.scss"
 
 export default function Profil() {
   const { id } = useParams();
@@ -15,7 +17,11 @@ export default function Profil() {
           {/* bars Activity     */}
             <div>
               <BarChartActivity userId={id} />
+              <div className="bottomGraphic">
               <UserLineChart userId={id} />
+              <ActivitiesRadarChart userId={id} />
+              </div>
+             
             </div>
         <Informations userId={id} />
         </Container>

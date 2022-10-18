@@ -1,0 +1,27 @@
+.loader-box
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.loader
+{
+	animation: spinner 1s linear infinite;
+	height: 60px;
+	width: 60px;
+	border: 8px solid white
+    {
+		left-color: red;
+		right-color:  black;
+		radius: 50%;
+	}
+}
+@keyframes spinner
+{
+	to
+    {
+		transform: rotate(360deg);
+	}
+}

@@ -6,12 +6,15 @@ import { Container } from "react-bootstrap";
 import { useParams } from "react-router";
 import useApi from "../../services/hooks/useApi";
 import "./style.scss";
-
+/**
+ * 
+ * @returns 
+ */
 export function Informations() {
   const { id } = useParams();
   const { data, error, isLoading } = useApi("key-data", id);
   let info = data;
-  console.log(info);
+
   if (error || isLoading) {
     console.log(error);
   }

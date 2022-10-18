@@ -1,17 +1,20 @@
-import React from "react";
-import Error from "../../views/Error";
+import React, { useEffect } from "react";
 import "./style.scss";
 import useApi from "../../services/hooks/useApi";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader";
 
 export default function HeaderDashbord() {
   const { id } = useParams();
   const { data, error, isLoading } = useApi("userInfos", id);
   /* Retrieving data:*/
 const firstName =  data.firstName
-  if (error && !isLoading) {
-    return <Error />;
+useEffect(()=>{
+  if (error || isLoading) {
+    <Loader/>;
   }
+})
+  
   return (
     <div>
       {

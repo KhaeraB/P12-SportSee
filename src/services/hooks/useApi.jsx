@@ -56,13 +56,10 @@ function getByEndpoints(service, id) {
     case "key-data":
       return `user/${id}`;
 
-    case "today-score":
-      return `user/${id}`;
-
     case "activities":
       return `user/${id}/performance`;
 
-    case "averageSessions":
+    case "sessions":
       return `user/${id}/average-sessions`;
 
     case "daysActivity":
@@ -84,9 +81,9 @@ function DataByService(data, service) {
         return NutriScore(data);
 
       case "activities":
-        return Activities(data.data.data);
+        return getAllActivities(data.data.data);
 
-      case "averageSessions":
+      case "sessions":
         return AverageSessions(data.data.sessions);
 
       case "daysActivity":
@@ -113,10 +110,28 @@ export function Activities() {
       value: 0,
     });
   }
-
-  return activities;
+  return {
+    activity: activities.activity, 
+    value : activities.value
+   }  
 }
 
+function getAllActivities(data) {
+  const activities = [];
+
+  if (data) {
+    for (let item of data) {
+      activities.push({
+        activity: TYPE_0F_ACTIVITY[item.kind],
+        value: item.value,
+      });
+    }
+
+    return activities;
+  }
+
+  return Activities();
+}
 /**
  * @returns {array.Object} default data for AverageSessionsChart
  */

@@ -16,7 +16,7 @@ import "./style.scss"
 
 export function UserLineChart({ userId }) {
   const { id } = useParams();
-  const { data, isLoading, error } = useApi("averageSessions", id);
+  const { data, isLoading, error } = useApi("sessions", id);
 
   const sessions = data;
 
@@ -78,7 +78,7 @@ export function UserLineChart({ userId }) {
           }}
         />
       </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> 
     </Container>
   );
 }
