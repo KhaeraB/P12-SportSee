@@ -9,7 +9,7 @@ import {ActivitiesRadarChart} from "../../compoments/Radar";
 import "./style.scss"
 import { ScoreActivity } from "../../compoments/PieChart";
 
-export default function Profil() {
+export default function Dashboard() {
   const { id } = useParams();
   return (
     <Container className="content">

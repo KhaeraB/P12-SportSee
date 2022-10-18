@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-import Profil from './views/Dashboard'
+import Dashboard from './views/Dashboard';
 import Setting from './views/Setting'
 import Community from './views/Community'
 import Error from './views/Error'
@@ -10,13 +9,14 @@ import Header  from './compoments/Header'
 import Footer from './compoments/Footer'
 import './style.scss'
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Router>
       <Header/>
       <Routes>
           <Route path='/' element={<Navigate to="/profil/12" replace />} />
-          <Route path='/profil/:id' element={<Profil/>} />
+          <Route path='/profil/:id' element={<Dashboard/>} />
           <Route path='/setting' element={<Setting/>} />
           <Route path='/community' element={<Community/>} />
           <Route path='/*' element={<Error/>} />

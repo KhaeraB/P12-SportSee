@@ -6,7 +6,8 @@ import {
   PolarAngleAxis,
   PolarGrid,
   Radar,
-  RadarChart
+  RadarChart, 
+  ResponsiveContainer
 } from "recharts";
 
 import useApi from "../../services/hooks/useApi";
@@ -34,7 +35,7 @@ export function ActivitiesRadarChart({ userId }) {
                 <PolarAngleAxis dataKey="activity" stroke={`${colors.white}`}/>
                 <Radar dataKey="value" stroke={`${colors.red}`} fill={`${colors.red}`} fillOpacity={0.7} />
               </RadarChart>
-     
+         
           </Container>
       )  
 }
