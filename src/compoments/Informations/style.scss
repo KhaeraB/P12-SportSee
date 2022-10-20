@@ -1,34 +1,42 @@
 .info{
     display: flex;
     flex-direction: column;
+    margin-left: 2%;
+    @media (max-width: 768px)
+    {   
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: 0;
+    }
     .type{
         display: flex;
         flex-direction: row;
         background-color: #FBFBFB;
         margin-bottom: 15%;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
-        border-radius: 5px;
-        img{
-            margin: 4px;
-        }
-    }
-}
-.profil{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    .type{
         height: 124px;
         width: 258px;
         border-radius: 5px;
         align-content: center;
+        img{
+            margin: 4px;
+        }
         @media (max-width: 1024px)
         {
-            height: 117px;
+            height: 106px;
             width: 218px;
         }
+        @media (max-width: 768px)
+        {   
+            margin-top:2%;
+            margin-bottom: 0;
+            height: 87px;
+            width: 195px;
+        }
+       
        &:last-child{
-        margin: 0;
+        margin-bottom: 0;
        }
         .cardInfo{
             display: flex;
@@ -45,4 +53,7 @@
         }
     }
    
-  }
+}
+
+    
+  

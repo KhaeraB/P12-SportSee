@@ -5,7 +5,7 @@ import { DaysActivities } from "../../models/DaysActivities";
 import { NutriScore } from "../../models/NutriScore";
 import { infoUser } from "../../models/InfoUser";
 import {AverageSessions} from "../../models/SessionsAverage"
-import { getAllActivities } from "../../models/Performances";
+import { Activities } from "../../models/Performances";
 const BASE_URL = "http://localhost:3000";
 
 
@@ -18,10 +18,10 @@ function useApi(service, id) {
   const [isLoading, setIsLoading] = useState(true);
 
   const [error, setError] = useState(false);
+  
   useEffect(() => {
     if (!endpoint) return;
 
-    setIsLoading(true);
     async function axiosData() {
       try {
         const url = `${BASE_URL}/${endpoint}`;
@@ -29,8 +29,10 @@ function useApi(service, id) {
        // console.log(dataApi)
         const getData = DataByService(dataApi, service);
         setData(getData);
-      } catch (err) {
-        setError(err);
+        setIsLoading(false);
+      } catch (error) {
+        setError(true);
+        console.log(error);
         setIsLoading(false);
       }
     }
@@ -70,19 +72,19 @@ function DataByService(data, service) {
   if (data) {
     switch (service) {
       case "userInfos":
-        return infoUser(data);
+        return new infoUser(data)._info;
         
       case "key-data":
-        return NutriScore(data);
+        return new NutriScore(data)._macro;
 
       case "activities":
-        return getAllActivities(data.data.data);
+        return new Activities(data.data.data)._getAllActivities;
 
       case "sessions":
-        return AverageSessions(data.data.sessions);
+        return new AverageSessions(data.data.sessions)._sessions;
 
       case "daysActivity":
-        return DaysActivities(data.data.sessions);
+        return new DaysActivities(data.data.sessions)._dayActivity;
 
       default:
         console.error(

@@ -47,6 +47,10 @@ input{
     margin: 0 20%;
     @media (max-width: 1024px)
     {
-        margin: 0px 3% 0% 14%;
+        margin: 0% 3% 0% 14%;
+    }
+    @media (max-width: 768px)
+    {
+        margin: 0 2% 0% 18%;
     }
 }

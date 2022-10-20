@@ -8,7 +8,7 @@ import "./style.scss";
  * @param {*}
  * @returns {jsx}
  */
-function Loader()
+ export default function Loader()
 {
 	return (
         <div className="loader-box">
@@ -17,4 +17,3 @@ function Loader()
 	)
 }
 
-export default Loader;

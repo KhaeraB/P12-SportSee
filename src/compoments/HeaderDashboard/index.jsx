@@ -1,25 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import useApi from "../../services/hooks/useApi";
 import { useParams } from "react-router-dom";
-import Loader from "../Loader";
 
+/**
+ * @component
+ * @description Render of firstName of user
+ * @function HeaderDashbord
+ * @param {string} id
+ * @returns {jsx}
+ */
 export default function HeaderDashbord() {
   const { id } = useParams();
-  const { data, error, isLoading } = useApi("userInfos", id);
-  /* Retrieving data:*/
-const firstName =  data.firstName
-useEffect(()=>{
-  if (error || isLoading) {
-    <Loader/>;
-  }
-})
+  const { data} = useApi("userInfos", id);
+
+  const [userInfo, setActivities] = useState([])
+
+  useEffect(()=>{
+    setActivities(data)
+  }, [data])
+
   
   return (
     <div>
       {
-        <h1 key={firstName}>
-          Bonjour <span className="userName">{isLoading && firstName}</span>
+        <h1 key={userInfo.firstName}>
+          Bonjour <span className="userName">{userInfo.firstName}</span>
         </h1>
       }
       <p className="congratulation">

@@ -1,25 +1,32 @@
 
 /**
- * @param {array.Object} data
+ * @param {array.Object} this.data
  * @returns {array.Object} data for DailyActivityChart
  */
-export function DaysActivities(data) {
-  if (data) {
-    const dailyActivity = [];
-
-    for (let item of data) {
-      // eslint-disable-next-line no-unused-vars
-      const [yyyy, mm, dd] = item.day.split("-");
-
-      dailyActivity.push({
-        day: `${dd.slice(1)}`,
-        kilogram: item.kilogram,
-        calories: item.calories,
-      });
-    }
-   // console.log(dailyActivity)
-    return dailyActivity;
+export class DaysActivities{
+  constructor(data){
+    this.data = data
   }
 
-  return DaysActivities();
+  get _dayActivity(){
+    if(this.data) {
+      const dailyActivity = [];
+  
+      for (let item of this.data) {
+        // eslint-disable-next-line no-unused-vars
+        const [yyyy, mm, dd] = item.day.split("-");
+  
+        dailyActivity.push({
+          day: `${dd.slice(1)}`,
+          kilogram: item.kilogram,
+          calories: item.calories,
+        });
+      }
+     // console.log(dailyActivity)
+      return dailyActivity;
+    }
+  
+    return this.dayActivity();
+  }
+  
 }

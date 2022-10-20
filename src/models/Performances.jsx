@@ -6,7 +6,13 @@ const TYPE_0F_ACTIVITY = {
     5: "Vitesse",
     6: "Intensité",
   };
-export function Activities() {
+  
+export class Activities{
+  constructor(data){
+    this.data = data; 
+  }
+
+  get _activities() {
     const activities = [];
   
     for (let key in TYPE_0F_ACTIVITY) {
@@ -21,11 +27,11 @@ export function Activities() {
      }  
   }
   
- export function getAllActivities(data) {
+  get _getAllActivities() {
     const activities = [];
   
-    if (data) {
-      for (let item of data) {
+    if (this.data) {
+      for (let item of this.data) {
         activities.push({
           activity: TYPE_0F_ACTIVITY[item.kind],
           value: item.value,
@@ -35,5 +41,6 @@ export function Activities() {
       return activities;
     }
   
-    return Activities();
+    return this._activities();
   }
+}

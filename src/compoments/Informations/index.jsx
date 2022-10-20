@@ -4,20 +4,28 @@ import fatIcon from "../../assets/fat.svg";
 import proteinIcon from "../../assets/protein.svg";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router";
+import { useEffect } from "react";
+import Loader from "../Loader";
 import useApi from "../../services/hooks/useApi";
 import "./style.scss";
+
 /**
- * 
- * @returns 
+ * @component
+ * @description Render of the nutriscore if user
+ * @function Informations
+ * @param {string} id
+ * @returns {jsx}
  */
 export function Informations() {
   const { id } = useParams();
   const { data, error, isLoading } = useApi("key-data", id);
   let info = data;
 
-  if (error || isLoading) {
-    console.log(error);
-  }
+  useEffect(()=>{
+    if (error || isLoading) {
+      < Loader /> 
+    }
+  }, [error, data, isLoading])
   return (
     <Container className="info">
       <div className="type">

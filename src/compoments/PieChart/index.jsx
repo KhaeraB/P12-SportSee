@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 // import Recharts
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import Loader from "../Loader";
 import useApi from "../../services/hooks/useApi";
 import "./style.scss";
@@ -38,6 +38,7 @@ export function ScoreActivity({ userId }) {
           objectif
         </p>
       </div>
+      <ResponsiveContainer width="100%" height="100%">
       <PieChart width={253} height={268}>
         <Pie
           data={pie}
@@ -45,8 +46,8 @@ export function ScoreActivity({ userId }) {
           outerRadius={100}
           paddingAngle={0}
           dataKey="value"
-          startAngle={190}
-          endAngle={-360}
+          startAngle={90}
+          endAngle={360}
         >
           {pie.map((entry, index) => (
             <Cell
@@ -58,6 +59,7 @@ export function ScoreActivity({ userId }) {
           ))}
         </Pie>
       </PieChart>
+      </ResponsiveContainer>
     </Container>
   );
 }

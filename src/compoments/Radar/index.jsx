@@ -1,43 +1,55 @@
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import {
   PolarAngleAxis,
   PolarGrid,
   Radar,
-  RadarChart, 
-  ResponsiveContainer
+  RadarChart,
+  ResponsiveContainer,
 } from "recharts";
 
 import useApi from "../../services/hooks/useApi";
+import colors from "../../utils/colors";
+import "./style.scss";
 
-import colors  from "../../utils/colors";
-import Loader from "../Loader";
-import "./style.scss"; 
+/**
+ * @component
+ * @description Render of the performances in the Radar Chart
+ * @function ActivitiesRadarChart
+ * @param {string} id
+ * @returns {jsx}
+ */
+export function ActivitiesRadarChart() {
+  const { id } = useParams();
+  const { data } = useApi("activities", id);
+  const [activities, setActivities] = useState([]);
+  useEffect(() => {
+    setActivities(data);
+  }, [data]);
 
-export function ActivitiesRadarChart({ userId }) {
-    const {id} = useParams()
-    const { data, isLoading, error } = useApi("activities", id);
-
-    let activities = data;
-    useEffect(()=>{
-      if (error || isLoading) {
-        < Loader /> 
-      }
-    }, [error, data, isLoading])
-
-     return(
-          <Container className="radar">
-          
-              <RadarChart width={258} height={268} data={activities} outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}>
-                <PolarGrid />
-                <PolarAngleAxis dataKey="activity" stroke={`${colors.white}`}/>
-                <Radar dataKey="value" stroke={`${colors.red}`} fill={`${colors.red}`} fillOpacity={0.7} />
-              </RadarChart>
-         
-          </Container>
-      )  
+  if (activities.length > 0) {
+    return (
+      <Container className="radar">
+        <ResponsiveContainer width="100%" height="100%">
+          <RadarChart
+            data={activities}
+            outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}
+          >
+            <PolarGrid radialLines={false} />
+            <PolarAngleAxis dataKey="activity" stroke={`${colors.white}`} />
+            <Radar
+              dataKey="value"
+              stroke={`${colors.red}`}
+              fill={`${colors.red}`}
+              fillOpacity={0.7}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+      </Container>
+    );
+  }
 }
 
 ActivitiesRadarChart.propTypes = {

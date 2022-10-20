@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./style.scss";
 import {
   Bar,
@@ -13,17 +14,23 @@ import {
 import colors from "../../utils/colors"
 import useApi from "../../services/hooks/useApi";
 
+/**
+ * @component
+ * @description Render of the performances in the BarChart
+ * @function  BarChartAvtivity
+ * @param {string} id
+ * @returns {jsx}
+ */
 export default function BarChartAvtivity() {
   const { id } = useParams();
-  const { data, error, isLoading } = useApi("daysActivity", id);
-  let oneDayActivity = data;
+  const { data} = useApi("daysActivity", id);
+ 
+  const [oneDayActivity, setActivities] = useState([])
+   
+  useEffect(()=>{
+    setActivities(data)
+  }, [data])
   
-  if (error || !isLoading) {
-    console.log(error)
-  }
-  //console.log(oneDayActivity)
- 
- 
   return (
     <div className="graphic ">
         <div className="info-graphic">

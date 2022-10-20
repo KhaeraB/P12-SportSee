@@ -18,7 +18,6 @@ import "./style.scss"
 export function UserLineChart({ userId }) {
   const { id } = useParams();
   const { data, isLoading, error } = useApi("sessions", id);
-
   const sessions = data;
 
   useEffect(()=>{
