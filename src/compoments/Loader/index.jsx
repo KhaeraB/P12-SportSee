@@ -3,7 +3,7 @@ import "./style.scss";
 
 /**
  * @component
- * @description Render a loader when the datas are not fetched
+ * @description Render a loader when the datas aren't fetched
  * @function Loader
  * @param {*}
  * @returns {jsx}

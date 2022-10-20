@@ -1,31 +1,36 @@
+//REACT
+import { Container } from "react-bootstrap";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+
+//ICONS
 import calorieIcon from "../../assets/energy.svg";
 import carbIcon from "../../assets/carb.svg";
 import fatIcon from "../../assets/fat.svg";
 import proteinIcon from "../../assets/protein.svg";
-import { Container } from "react-bootstrap";
-import { useParams } from "react-router";
-import { useEffect } from "react";
-import Loader from "../Loader";
+
+//HOOK
 import useApi from "../../services/hooks/useApi";
+
+//STYLE
 import "./style.scss";
 
 /**
  * @component
  * @description Render of the nutriscore if user
- * @function Informations
+ * @function CardInfo
  * @param {string} id
  * @returns {jsx}
  */
-export function Informations() {
+export default function CardInfo() {
   const { id } = useParams();
-  const { data, error, isLoading } = useApi("key-data", id);
-  let info = data;
+  const { data} = useApi("key-data", id);
+  const [info, setActivities] = useState([]);
 
-  useEffect(()=>{
-    if (error || isLoading) {
-      < Loader /> 
-    }
-  }, [error, data, isLoading])
+  useEffect(() => {
+    setActivities(data);
+  }, [data]);
+  
   return (
     <Container className="info">
       <div className="type">

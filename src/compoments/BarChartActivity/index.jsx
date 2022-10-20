@@ -1,7 +1,9 @@
+//REACT
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./style.scss";
+
+//RECHART
 import {
   Bar,
   BarChart,
@@ -11,8 +13,13 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import colors from "../../utils/colors"
+
+//HOOK
 import useApi from "../../services/hooks/useApi";
+
+//STYLE
+import "./style.scss";
+import colors from "../../utils/colors";
 
 /**
  * @component
@@ -23,25 +30,29 @@ import useApi from "../../services/hooks/useApi";
  */
 export default function BarChartAvtivity() {
   const { id } = useParams();
-  const { data} = useApi("daysActivity", id);
- 
-  const [oneDayActivity, setActivities] = useState([])
-   
-  useEffect(()=>{
-    setActivities(data)
-  }, [data])
-  
+  const { data } = useApi("daysActivity", id);
+
+  const [oneDayActivity, setActivities] = useState([]);
+
+  useEffect(() => {
+    setActivities(data);
+  }, [data]);
+
   return (
     <div className="graphic ">
-        <div className="info-graphic">
-            <div className="title-graphic ">Activité quotidienne</div>
+      <div className="info-graphic">
+        <div className="title-graphic ">Activité quotidienne</div>
 
-            <div className="legends">
-                <div className="circle"><div className="point black"></div>&nbsp; Poids (kg)</div>
-                <div className="circle"><div className="point red"></div>&nbsp;  Calories brûlées (kCal)</div>
-            </div>
-         </div>
-    <ResponsiveContainer width="100%" aspect={3}>
+        <div className="legends">
+          <div className="circle">
+            <div className="point black"></div>&nbsp; Poids (kg)
+          </div>
+          <div className="circle">
+            <div className="point red"></div>&nbsp; Calories brûlées (kCal)
+          </div>
+        </div>
+      </div>
+      <ResponsiveContainer width="100%" aspect={3}>
         <BarChart
           data={oneDayActivity}
           margin={{ top: 80, right: 48, bottom: 32, left: 48 }}
@@ -57,14 +68,14 @@ export default function BarChartAvtivity() {
             dataKey="day"
             stroke={`${colors.gray_medium}`}
             tickLine={false}
-            tick={{ fontSize: 14, fontWeight: 500}}
+            tick={{ fontSize: 14, fontWeight: 500 }}
             dy={10}
           />
           <YAxis
             yAxisId="kg"
             dataKey="kilogram"
             stroke={`${colors.gray_medium}`}
-            orientation='right'
+            orientation="right"
             axisLine={false}
             tickLine={false}
             tickCount={3}
@@ -72,12 +83,12 @@ export default function BarChartAvtivity() {
           <YAxis
             yAxisId="cal"
             dataKey="calories"
-            orientation='false'
+            orientation="false"
             axisLine={false}
             tickLine={false}
             hide={true}
           />
-          <Tooltip content={<CustomTooltip/>}/>
+          <Tooltip content={<CustomTooltip />} />
           <Bar
             yAxisId="kg"
             dataKey="kilogram"
@@ -92,40 +103,39 @@ export default function BarChartAvtivity() {
             fill={`${colors.red}`}
             radius={[50, 50, 0, 0]}
           />
-          
         </BarChart>
       </ResponsiveContainer>
-      </div>
+    </div>
   );
 }
-    BarChartAvtivity.propTypes = {
-        userId: PropTypes.string.isRequired,
-    };
-    /**
-     * @component
-     * @description Component for custom tooltip
-     * @function CustomTooltip
-     * @param {*}
-     * @returns {jsx}
-     */
-  function CustomTooltip({ active, payload }) {
-    if (active && payload) {
-      return (
-        <div className='custom-tooltip '>
-          <div background={`${colors.neutral800}`}>
-            {`${payload[0].value} kg`}
-          </div>
-          <div background={`${colors.primary500}`}>
-            {`${payload[1].value} kCal`}
-          </div>
+BarChartAvtivity.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
+
+/**
+ * @component
+ * @description Component for custom tooltip
+ * @function CustomTooltip
+ * @param {*}
+ * @returns {jsx}
+ */ function CustomTooltip({ active, payload }) {
+  if (active && payload) {
+    return (
+      <div className="custom-tooltip ">
+        <div background={`${colors.neutral800}`}>
+          {`${payload[0].value} kg`}
         </div>
-      );
-    }
-  
-    return null;
+        <div background={`${colors.primary500}`}>
+          {`${payload[1].value} kCal`}
+        </div>
+      </div>
+    );
   }
-  
-  CustomTooltip.propTypes = {
-    active: PropTypes.bool,
-    payload: PropTypes.array,
-  };
+
+  return null;
+}
+
+CustomTooltip.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.array,
+};

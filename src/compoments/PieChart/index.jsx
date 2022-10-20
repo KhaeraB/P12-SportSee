@@ -1,25 +1,33 @@
+//REACT
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 // import Recharts
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import Loader from "../Loader";
-import useApi from "../../services/hooks/useApi";
-import "./style.scss";
 
-//import colors from "../../utils/colors";
-import { useParams } from "react-router-dom";
+//HOOK
+import useApi from "../../services/hooks/useApi";
+
+//STYLE
+import "./style.scss";
 import colors from "../../utils/colors";
 
-export function ScoreActivity({ userId }) {
+/**
+ * @component
+ * @description Render of the score in PieChart
+ * @function PieChartActivity
+ * @param {string} id
+ * @returns {jsx}
+ */
+export default function PieChartActivity() {
   const { id } = useParams();
-  const { data, isLoading, error } = useApi("userInfos", id);
+  const { data } = useApi("userInfos", id);
+
+  const [score, setActivities] = useState([]);
   useEffect(() => {
-    if (error || isLoading) {
-      <Loader />;
-    }
-  }, [error, data, isLoading]);
-  const score = data.userScore;
+    setActivities(data.userScore);
+  }, [data]);
 
   // create tab with score and difference between 100
   const pie = [
@@ -64,6 +72,6 @@ export function ScoreActivity({ userId }) {
   );
 }
 
-ScoreActivity.propTypes = {
+PieChartActivity.propTypes = {
   userId: PropTypes.string.isRequired,
 };

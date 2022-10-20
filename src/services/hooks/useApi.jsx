@@ -1,11 +1,13 @@
-// eslint-disable-next-line no-unused-vars
+//REACT
+// eslint-disable-next-line no-unused-vars 
 import React, { useState, useEffect } from "react";
+//AXIOS
 import axios from "axios";
-import { DaysActivities } from "../../models/DaysActivities";
-import { NutriScore } from "../../models/NutriScore";
-import { infoUser } from "../../models/InfoUser";
-import {AverageSessions} from "../../models/SessionsAverage"
-import { Activities } from "../../models/Performances";
+import DaysActivities  from "../../models/DaysActivities";
+import  NutriScore  from "../../models/NutriScore";
+import  infoUser  from "../../models/InfoUser";
+import AverageSessions from "../../models/SessionsAverage"
+import  Activities  from "../../models/Performances";
 const BASE_URL = "http://localhost:3000";
 
 

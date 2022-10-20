@@ -1,20 +1,24 @@
 const TYPE_0F_ACTIVITY = {
-    1: "Cardio",
-    2: "Energie",
-    3: "Endurance",
-    4: "Force",
-    5: "Vitesse",
-    6: "Intensité",
-  };
-  
-export class Activities{
-  constructor(data){
-    this.data = data; 
+  1: "Cardio",
+  2: "Energie",
+  3: "Endurance",
+  4: "Force",
+  5: "Vitesse",
+  6: "Intensité",
+};
+
+/**
+ * @param {array.Object} this.data
+ * @returns {array.Object} data for RacharChart
+ */
+export default class Activities {
+  constructor(data) {
+    this.data = data;
   }
 
   get _activities() {
     const activities = [];
-  
+
     for (let key in TYPE_0F_ACTIVITY) {
       activities.push({
         activity: TYPE_0F_ACTIVITY[key],
@@ -22,14 +26,14 @@ export class Activities{
       });
     }
     return {
-      activity: activities.activity, 
-      value : activities.value
-     }  
+      activity: activities.activity,
+      value: activities.value,
+    };
   }
-  
+
   get _getAllActivities() {
     const activities = [];
-  
+
     if (this.data) {
       for (let item of this.data) {
         activities.push({
@@ -37,10 +41,10 @@ export class Activities{
           value: item.value,
         });
       }
-  
+
       return activities;
     }
-  
+
     return this._activities();
   }
 }

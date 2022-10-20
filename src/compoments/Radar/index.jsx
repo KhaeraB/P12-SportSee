@@ -1,7 +1,10 @@
+//REACT
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+
+//RECHART
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -10,7 +13,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+//HOOK
 import useApi from "../../services/hooks/useApi";
+
+//STYLE
 import colors from "../../utils/colors";
 import "./style.scss";
 
