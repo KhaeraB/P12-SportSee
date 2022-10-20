@@ -41,10 +41,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 <!-- Launch Project -->
 ###  Recharts
-Boostrap 5.2 is instal
+Boostrap 5.2 is install
 
 ### Sass
-Sass is instal
+Sass is install
 
 ### React Router
 The version 6 is install
