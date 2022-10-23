@@ -54,7 +54,7 @@ link-maquette-Figma
 https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR
 
 link-Kanban-SportSee
-https://www.notion.so/Tableau-de-bord-SportSee-dafbdf999f6544db92d41703b446cdae
+https://pebble-people-f7a.notion.site/Tableau-de-bord-SportSee-dafbdf999f6544db92d41703b446cdae
 
 ### Installation
 npm-8.5.5
