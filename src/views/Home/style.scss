@@ -1,0 +1,16 @@
+.link{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    a{
+        text-decoration: none;
+        color: black;
+        &:first-child{
+            margin-right: 2%;
+        }
+        span{
+            color: red; 
+        }
+    }
+}

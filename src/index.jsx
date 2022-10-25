@@ -1,12 +1,20 @@
+//REACT
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//VIEWS
 import Dashboard from './views/Dashboard';
 import Setting from './views/Setting'
 import Community from './views/Community'
 import Error from './views/Error'
+import Home from './views/Home'; 
+
+//COMPONENTS
 import Header  from './compoments/Header'
 import Footer from './compoments/Footer'
+
+//STYLE
 import './style.scss'
 
 
@@ -15,7 +23,7 @@ root.render(
     <Router>
       <Header/>
       <Routes>
-          <Route path='/' element={<Navigate to="/profil/12" replace />} />
+          <Route path='/' element={<Home/>} />
           <Route path='/profil/:id' element={<Dashboard/>} />
           <Route path='/setting' element={<Setting/>} />
           <Route path='/community' element={<Community/>} />

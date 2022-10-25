@@ -3,11 +3,15 @@
 import React, { useState, useEffect } from "react";
 //AXIOS
 import axios from "axios";
+
+//MODELS
 import DaysActivities  from "../../models/DaysActivities";
 import  NutriScore  from "../../models/NutriScore";
 import  infoUser  from "../../models/InfoUser";
 import AverageSessions from "../../models/SessionsAverage"
 import  Activities  from "../../models/Performances";
+
+//URL
 const BASE_URL = "http://localhost:3000";
 
 
@@ -21,12 +25,16 @@ function useApi(service, id) {
 
   const [error, setError] = useState(false);
   
+
+  
   useEffect(() => {
     if (!endpoint) return;
 
     async function axiosData() {
       try {
         const url = `${BASE_URL}/${endpoint}`;
+        //MOCK URL 
+        // const dataMocked = '../../mock/data.json'
         const dataApi = await axios.get(url).then(({ data }) => data);
        // console.log(dataApi)
         const getData = DataByService(dataApi, service);
