@@ -4,7 +4,7 @@ Belkadi Khaera
 ### Technologies
 Javascript
 
-Sassv-1.54.5
+Sass-1.54.5
 
 React-18.2.0
 
